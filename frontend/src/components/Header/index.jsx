@@ -1,13 +1,23 @@
-import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faSearch } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react"
+import SearchIcon from '@mui/icons-material/Search';
+import HomeIcon from '@mui/icons-material/Home';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 export default () => {
+    const [selected, setSelected] = useState(true)
+
+    const handleSelect = () => {
+        setSelected(!selected)
+    }
 
     return (
         <div className="flex items-center p-2 space-x-2">
-            <div className="bg-neutral-800 p-3 rounded-full cursor-pointer">
-                <FontAwesomeIcon icon={faHome} className="text-white text-xl" />
+            <div className="bg-neutral-800 hover:bg-neutral-600 p-2 rounded-full cursor-pointer transition duration-500" onClick={() => handleSelect()}>
+                {selected ? (
+                    <HomeIcon fontSize="large" className="text-white" />
+                ) : (
+                    <HomeOutlinedIcon fontSize="large" className="text-white" />
+                )}
             </div>
 
             <input 
@@ -16,7 +26,7 @@ export default () => {
                 placeholder="Pesquise um artista"
             />
 
-            <FontAwesomeIcon icon={faSearch} className="absolute left-19 top-5 text-neutral-500 text-2xl" />
+            <SearchIcon className="absolute left-20 text-neutral-400" />
         </div>
     )
 }
