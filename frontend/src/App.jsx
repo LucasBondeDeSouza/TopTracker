@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Search from "./components/Search";
 import Header from "./components/Header";
+import Main from "./components/Main";
 
 export default () => {
   const [name, setName] = useState("");
@@ -27,6 +28,7 @@ export default () => {
   return (
     <div className="bg-black h-screen">
       <Header />
+      <Main />
       
       <Search name={name} setName={setName} />
 
