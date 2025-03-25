@@ -1,17 +1,17 @@
 import React from "react";
-import MusicDashboard from "../MusicDashboard";
+import Dashboard from "../Dashboard";
 import DatasArtist from "../DatasArtist";
 
-export default () => {
+export default ({ token }) => {
 
     return (
-        <div className="max-w-6xl mx-auto px-2 grid grid-cols-6 space-x-2">
+        <div className="max-w-6xl mx-auto px-2 grid grid-cols-6 md:space-x-2">
             <div className="col-span-6 md:col-span-4">
-                <MusicDashboard />
+                <Dashboard token={token} />
             </div>
 
             <div className="col-span-2 hidden md:block">
-                <DatasArtist />
+                <DatasArtist token={token} />
             </div>
         </div>
     )

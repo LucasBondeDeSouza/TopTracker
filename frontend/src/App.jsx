@@ -1,50 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Search from "./components/Search";
 import Header from "./components/Header";
 import Main from "./components/Main";
 
 export default () => {
-  const [name, setName] = useState("");
-  const [data, setData] = useState([]);
+  const [token, setToken] = useState("")
+  const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID
+  const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
 
-  const getArtist = async (artist) => {
-    try {
-      const token = import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN;
-      const response = await axios.get(
-        `https://api.spotify.com/v1/search?q=${artist}&type=artist`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setData(response.data.artists.items); // Ajustado para acessar a lista de artistas
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const response = await axios.post(
+          "https://accounts.spotify.com/api/token",
+          "grant_type=client_credentials",
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: "Basic " + btoa(client_id + ":" + client_secret),
+            },
+          }
+        );
+
+        setToken(response.data.access_token);
+
+        // Renova o token 5 minutos antes da expiração (expires_in está em segundos)
+        setTimeout(fetchToken, (response.data.expires_in - 300) * 1000);
+      } catch (error) {
+        console.error("Erro ao buscar token", error);
+      }
+    };
+
+    fetchToken();
+  }, [client_id, client_secret]);
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black min-h-screen">
       <Header />
-      <Main />
-      
-      <Search name={name} setName={setName} />
-
-      <button onClick={() => getArtist(name)}>Search</button>
-
-      <div>
-        {data.length > 0 ? (
-          <ul>
-            {data.map((artist) => (
-              <li key={artist.id}>{artist.name} {artist.id}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No artists found</p>
-        )}
-      </div>
+      <Main token={token} />
     </div>
   );
 };

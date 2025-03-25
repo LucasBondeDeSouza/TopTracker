@@ -13,7 +13,7 @@ export default () => {
     return (
         <div className="flex items-center p-2 space-x-2 max-w-6xl mx-auto">
             <div 
-                className="flex items-center justify-center bg-neutral-800 hover:bg-neutral-700 h-12 w-12 rounded-full cursor-pointer transition duration-500" 
+                className="flex items-center justify-center bg-neutral-800 hover:bg-neutral-700 size-12 rounded-full cursor-pointer transition duration-500" 
                 onClick={handleSelect}
             >
                 {selected ? (
