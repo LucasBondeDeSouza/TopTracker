@@ -2,13 +2,20 @@ import React, { useRef, useState, useEffect } from "react";
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 
-import { fetchArtistsByGenre } from "../../SpotifyDB";
-
-export default ({ token, genre, country, title }) => {
+export default ({ title, request }) => {
     const scrollRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
     const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await request;
+            setData(result);
+        };
+
+        fetchData();
+    }, [request])
 
     const handleScroll = () => {
         if (scrollRef.current) {
@@ -27,17 +34,6 @@ export default ({ token, genre, country, title }) => {
             scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
         }
     };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (token) {
-                const artists = await fetchArtistsByGenre(token, genre, country);
-                setData(artists);
-            }
-        };
-
-        fetchData();
-    }, [token]);
 
     return (
         <div
@@ -73,8 +69,15 @@ export default ({ token, genre, country, title }) => {
                             alt={artist.name}
                             className="size-39 bg-black object-cover rounded-lg"
                         />
-                        <div className="mt-3 w-35 text-neutral-400 text-sm font-semibold">
-                            <p>{artist.name}</p>
+                        <div className="mt-3 w-35">
+                            {artist.artists && (
+                                <p className="text-neutral-400 font-semibold">
+                                    {artist.artists.length > 15 ? artist.artists.slice(0, 15) + '...' : artist.artists}
+                                </p>
+                            )}
+                            <p className="text-neutral-400 text-sm font-semibold">
+                                {artist.name.length > 30 ? artist.name.slice(0, 30) + '...' : artist.name}
+                            </p>
                         </div>
                     </div>
                 ))}

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-import CategoryDashboard from "../CategoryDashboard";
+import HeaderDashboard from "../HeaderDashboard";
+import AllDashboard from "../AllDashboard";
+import MusicDashboard from "../MusicDashboard";
 
 export default ({ token }) => {
+    const [select, setSelect] = useState('all')
 
     return (
         <div className="bg-neutral-900 rounded-lg mb-5">
-            <CategoryDashboard token={token} genre={'sertanejo'} country={'BR'} title={'Top Sertanejo'} />
-            <CategoryDashboard token={token} genre={'pop'} country={'US'} title={'Top Pop'} />
-            <CategoryDashboard token={token} genre={'rock'} country={''} title={'Top Rock'} />
+            <HeaderDashboard select={select} setSelect={setSelect} />
+
+            {select == 'all' ? <AllDashboard token={token} /> : <MusicDashboard token={token} />}
         </div>
     );
 };
