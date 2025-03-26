@@ -14,7 +14,7 @@ export const fetchArtistsByGenre = async (token, genre, country) => {
 
         return response.data.artists.items.map(artist => ({
             id: artist.id,
-            name: artist.name,
+            artist: artist.name,
             image: artist.images.length > 0 ? artist.images[1].url : "", // Pega a imagem média (ou vazio se não houver)
         }));
     } catch (error) {
@@ -88,8 +88,8 @@ export const fetchTrackByGenre = async (token, genre, country) => {
 
         return response.data.tracks.items.map(track => ({
             id: track.id,
+            artist: track.artists.map(artist => artist.name).join(", "),
             name: track.name,
-            artists: track.artists.map(artist => artist.name).join(", "),
             image: track.album.images.length > 0 ? track.album.images[1].url : "",
         }))
         

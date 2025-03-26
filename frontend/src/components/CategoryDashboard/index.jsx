@@ -6,12 +6,12 @@ export default ({ title, request }) => {
     const scrollRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
-    const [data, setData] = useState([]);
+    const [datas, setDatas] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await request;
-            setData(result);
+            setDatas(result);
         };
 
         fetchData();
@@ -58,26 +58,29 @@ export default ({ title, request }) => {
                 onScroll={handleScroll}
                 className="flex mt-2 overflow-x-auto scrollbar-hidden"
             >
-                {data.map((artist, index) => (
+                {datas.map((data, index) => (
                     <div
-                        key={artist.id}
+                        key={data.id}
                         className={`flex flex-col p-3 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? "ml-7" : ""
                             }`}
                     >
                         <img
-                            src={artist.image}
-                            alt={artist.name}
+                            src={data.image}
+                            alt={data.name}
                             className="size-39 bg-black object-cover rounded-lg"
                         />
                         <div className="mt-3 w-35">
-                            {artist.artists && (
-                                <p className="text-neutral-400 font-semibold">
-                                    {artist.artists.length > 15 ? artist.artists.slice(0, 15) + '...' : artist.artists}
+                            {data.artist && (
+                                <p className="text-neutral-50 text-sm font-semibold">
+                                    {data.artist.length > 18 ? data.artist.slice(0, 18) + '...' : data.artist}
                                 </p>
                             )}
-                            <p className="text-neutral-400 text-sm font-semibold">
-                                {artist.name.length > 30 ? artist.name.slice(0, 30) + '...' : artist.name}
-                            </p>
+
+                            {data.name && (
+                                <p className="text-neutral-400 text-sm font-semibold">
+                                    {data.name.length > 25 ? data.name.slice(0, 25) + '...' : data.name}
+                                </p>
+                            )}
                         </div>
                     </div>
                 ))}
