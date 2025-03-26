@@ -98,3 +98,28 @@ export const fetchTrackByGenre = async (token, genre, country) => {
         return [];
     }
 }
+
+export const fetchArtistSelected = async (token, artist_id) => {
+    try {
+        const response = await axios.get(
+            `https://api.spotify.com/v1/artists/${artist_id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+
+        const artistData = response.data;
+
+        return {
+            name: artistData.name,
+            image: artistData.images.length > 0 ? artistData.images[0].url : null, // Foto maior disponível
+            popularity: artistData.popularity
+        };
+    } catch (error) {
+        console.error("Erro ao buscar artistas:", error);
+        return [];
+    }
+}

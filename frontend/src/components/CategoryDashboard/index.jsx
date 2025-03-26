@@ -1,21 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 
-export default ({ title, request }) => {
+export default ({ title, data, setSelectArtist }) => {
     const scrollRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
-    const [datas, setDatas] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await request;
-            setDatas(result);
-        };
-
-        fetchData();
-    }, [request])
 
     const handleScroll = () => {
         if (scrollRef.current) {
@@ -58,27 +48,28 @@ export default ({ title, request }) => {
                 onScroll={handleScroll}
                 className="flex mt-2 overflow-x-auto scrollbar-hidden"
             >
-                {datas.map((data, index) => (
+                {data.map((item, index) => (
                     <div
-                        key={data.id}
+                        onMouseEnter={() => setSelectArtist(item.id)}
+                        key={item.id}
                         className={`flex flex-col p-3 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? "ml-7" : ""
                             }`}
                     >
                         <img
-                            src={data.image}
-                            alt={data.name}
+                            src={item.image}
+                            alt={item.name}
                             className="size-39 bg-black object-cover rounded-lg"
                         />
                         <div className="mt-3 w-35">
-                            {data.artist && (
+                            {item.artist && (
                                 <p className="text-neutral-50 text-sm font-semibold">
-                                    {data.artist.length > 18 ? data.artist.slice(0, 18) + '...' : data.artist}
+                                    {item.artist.length > 18 ? item.artist.slice(0, 18) + '...' : item.artist}
                                 </p>
                             )}
 
-                            {data.name && (
+                            {item.name && (
                                 <p className="text-neutral-400 text-sm font-semibold">
-                                    {data.name.length > 25 ? data.name.slice(0, 25) + '...' : data.name}
+                                    {item.name.length > 25 ? item.name.slice(0, 25) + '...' : item.name}
                                 </p>
                             )}
                         </div>
