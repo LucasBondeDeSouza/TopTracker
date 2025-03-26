@@ -5,13 +5,13 @@ import AllDashboard from "../AllDashboard";
 import MusicDashboard from "../MusicDashboard";
 
 export default ({ token }) => {
-    const [select, setSelect] = useState('all')
+    const [selectCategory, setSelectCategory] = useState('all')
 
     return (
         <div className="bg-neutral-900 rounded-lg mb-5">
-            <HeaderDashboard select={select} setSelect={setSelect} />
+            <HeaderDashboard selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
 
-            {select == 'all' ? <AllDashboard token={token} /> : <MusicDashboard token={token} />}
+            {selectCategory == 'all' ? <AllDashboard token={token} /> : <MusicDashboard token={token} />}
         </div>
     );
 };
