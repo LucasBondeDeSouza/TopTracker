@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import ChevronRight from '@mui/icons-material/ChevronRight';
-import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import ScrollButton from "../ScrollButton"; // Importe o componente ScrollButton
 
 export default ({ title, data, setSelectArtist }) => {
     const scrollRef = useRef(null);
@@ -13,18 +12,6 @@ export default ({ title, data, setSelectArtist }) => {
         }
     };
 
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
-        }
-    };
-
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
-        }
-    };
-
     return (
         <div
             className="relative"
@@ -32,15 +19,6 @@ export default ({ title, data, setSelectArtist }) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <h1 className="px-10 pt-5 text-white font-bold text-2xl">{title}</h1>
-
-            {/* Botão de scroll esquerdo */}
-            <button
-                onClick={scrollLeft}
-                className={`absolute left-5 top-1/2 cursor-pointer transform bg-neutral-800 hover:bg-neutral-700 size-8 rounded-full text-white transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
-                    }`}
-            >
-                <ChevronLeft fontSize="medium" className="text-white" />
-            </button>
 
             {/* Container de scroll */}
             <div
@@ -77,14 +55,8 @@ export default ({ title, data, setSelectArtist }) => {
                 ))}
             </div>
 
-            {/* Botão de scroll direito */}
-            <button
-                onClick={scrollRight}
-                className={`absolute right-5 top-1/2 cursor-pointer transform bg-neutral-800 hover:bg-neutral-700 size-8 rounded-full text-white transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
-                    }`}
-            >
-                <ChevronRight fontSize="medium" className="text-white" />
-            </button>
+            {/* Botões de Scroll utilizando o componente ScrollButton */}
+            <ScrollButton scrollRef={scrollRef} isHovered={isHovered} />
         </div>
     );
 };
