@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchArtistSelected } from "../../SpotifyDB";
-
-import ChevronRight from '@mui/icons-material/ChevronRight';
-import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import ScrollButton from "../ScrollButton"; // Importe o componente ScrollButton
 
 export default ({ token, selectArtist }) => {
     const [data, setData] = useState({});
@@ -13,18 +11,6 @@ export default ({ token, selectArtist }) => {
     const handleScroll = () => {
         if (scrollRef.current) {
             setHasScrolled(scrollRef.current.scrollLeft > 0);
-        }
-    };
-
-    const scrollLeft = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
-        }
-    };
-
-    const scrollRight = () => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
         }
     };
 
@@ -52,18 +38,13 @@ export default ({ token, selectArtist }) => {
                 </div>
             </div>
 
+            {/* Seção de rolagem com o ScrollButton */}
             <div 
                 className="relative"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <button
-                    onClick={scrollLeft}
-                    className={`absolute left-5 top-1/2 cursor-pointer transform bg-neutral-800 hover:bg-neutral-700 size-8 rounded-full text-white transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
-                >
-                    <ChevronLeft fontSize="medium" className="text-white" />
-                </button>
-
+                {/* Container de scroll */}
                 <div 
                     ref={scrollRef}
                     onScroll={handleScroll}
@@ -71,7 +52,7 @@ export default ({ token, selectArtist }) => {
                 >
                     <div className="flex">
                         {data.topTracks && data.topTracks.map((track) => (
-                            <div className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 cursor-pointer">
+                            <div key={track.id} className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 cursor-pointer">
                                 <div className="size-25 bg-cover rounded-lg" style={{ backgroundImage: `url(${track.imageUrl})` }}></div>
                                 <p className="text-white text-sm">
                                     {track.name.length > 10 ? track.name.slice(0, 10) + '...' : track.name}
@@ -81,12 +62,8 @@ export default ({ token, selectArtist }) => {
                     </div>
                 </div>
 
-                <button
-                    onClick={scrollRight}
-                    className={`absolute right-5 top-1/2 cursor-pointer transform bg-neutral-800 hover:bg-neutral-700 size-8 rounded-full text-white transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
-                >
-                    <ChevronRight fontSize="medium" className="text-white" />
-                </button>
+                {/* Usando ScrollButton para rolagem */}
+                <ScrollButton scrollRef={scrollRef} isHovered={isHovered} />
             </div>
         </div>
     );
