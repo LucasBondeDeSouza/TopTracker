@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { fetchArtistSelected } from "../../SpotifyDB";
-import ScrollButton from "../ScrollButton"; // Importe o componente ScrollButton
+import ScrollButton from "../ScrollButton";
 
 export default ({ token, selectArtist }) => {
     const [data, setData] = useState({});
@@ -54,6 +54,7 @@ export default ({ token, selectArtist }) => {
                         {data.topTracks && data.topTracks.map((track) => (
                             <div key={track.id} className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 transition duration-200 cursor-pointer">
                                 <div className="size-25 bg-cover rounded-lg" style={{ backgroundImage: `url(${track.imageUrl})` }}></div>
+                                
                                 <p className="text-white text-sm mt-2">
                                     {track.name.length > 10 ? track.name.slice(0, 10) + '...' : track.name}
                                 </p>
