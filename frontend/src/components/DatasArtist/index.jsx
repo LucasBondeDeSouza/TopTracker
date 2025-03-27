@@ -24,7 +24,7 @@ export default ({ token, selectArtist }) => {
                     >
                         <div className="w-full h-full rounded-lg gradient bg-gradient-to-b to-[#111] from-transparent">
                             <div className="w-full h-full rounded-lg gradient bg-gradient-to-l to-[#111] from-transparent">
-                                <p className="absolute bottom-10 left-10 text-white text-2xl">
+                                <p className="absolute bottom-10 left-10 text-white font-bold text-2xl">
                                     {data.name}
                                 </p>
                             </div>
