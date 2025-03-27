@@ -31,7 +31,7 @@ export default ({ token, selectArtist }) => {
             >
                 <div className="w-full h-full rounded-t-lg gradient bg-gradient-to-b to-[#111] from-transparent">
                     <div className="w-full h-full rounded-t-lg gradient bg-gradient-to-l to-[#111] from-transparent">
-                        <p className="absolute bottom-5 left-5 text-white font-bold text-2xl">
+                        <p className="absolute bottom-0 left-5 text-white font-bold text-2xl">
                             {data.name}
                         </p>
                     </div>
@@ -52,9 +52,9 @@ export default ({ token, selectArtist }) => {
                 >
                     <div className="flex">
                         {data.topTracks && data.topTracks.map((track) => (
-                            <div key={track.id} className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 cursor-pointer">
+                            <div key={track.id} className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 transition duration-200 cursor-pointer">
                                 <div className="size-25 bg-cover rounded-lg" style={{ backgroundImage: `url(${track.imageUrl})` }}></div>
-                                <p className="text-white text-sm">
+                                <p className="text-white text-sm mt-2">
                                     {track.name.length > 10 ? track.name.slice(0, 10) + '...' : track.name}
                                 </p>
                             </div>
