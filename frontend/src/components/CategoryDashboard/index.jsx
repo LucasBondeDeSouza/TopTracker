@@ -27,9 +27,10 @@ export default ({ title, data, setSelectArtist }) => {
                 className="flex mt-2 overflow-x-auto scrollbar-hidden"
             >
                 {data.map((item, index) => (
-                    <div
-                        onMouseEnter={() => setSelectArtist(item.id)}
-                        key={item.id}
+                    <a
+                        key={index}
+                        href={item.externalUrl && item.externalUrl} target="_blank"
+                        onMouseEnter={item.id ? () => setSelectArtist(item.id) : undefined}
                         className={`flex flex-col p-3 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? "ml-7" : ""
                             }`}
                     >
@@ -51,7 +52,7 @@ export default ({ title, data, setSelectArtist }) => {
                                 </p>
                             )}
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
 

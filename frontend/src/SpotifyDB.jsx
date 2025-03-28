@@ -36,7 +36,6 @@ export const fetchTopHitsByArtists = async (token, artist_id) => {
         )
 
         return response.data.tracks.map(track => ({
-            id: track.id,
             name: track.name,
             image: track.album.images.length > 0 ? track.album.images[0].url : ""
         }))
@@ -63,8 +62,8 @@ export const fetchPlaylistsByCountry = async (token, country) => {
         return response.data.playlists.items
             .filter(playlist => playlist !== null) // Remove elementos nulos
             .map(playlist => ({
-                id: playlist.id || "ID não disponível",
-                name: playlist.name || "Nome não disponível",
+                externalUrl: playlist.external_urls.spotify,
+                name: playlist.name,
                 image: playlist.images?.length > 0 ? playlist.images[0].url : "", // Usa optional chaining para evitar erros
             }));
 
@@ -87,7 +86,7 @@ export const fetchTrackByGenre = async (token, genre, country) => {
         );
 
         return response.data.tracks.items.map(track => ({
-            id: track.id,
+            externalUrl: track.external_urls.spotify,
             artist: track.artists.map(artist => artist.name).join(", "),
             name: track.name,
             image: track.album.images.length > 0 ? track.album.images[0].url : "",
@@ -132,7 +131,7 @@ export const fetchArtistSelected = async (token, artist_id) => {
             name: artistData.name,
             image: artistData.images.length > 0 ? artistData.images[0].url : null, // Foto maior disponível
             topTracks: tracksData.map(track => ({
-                id: track.id,
+                externalUrl: track.external_urls.spotify,
                 name: track.name,
                 imageUrl: track.album.images.length > 0 ? track.album.images[0].url : null,
             }))

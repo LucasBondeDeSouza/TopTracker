@@ -51,14 +51,14 @@ export default ({ token, selectArtist }) => {
                     className={`flex items-center content-center overflow-x-auto scrollbar-hidden h-40 rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900 ${data && !hasScrolled ? "pl-3" : ""}`}
                 >
                     <div className="flex">
-                        {data.topTracks && data.topTracks.map((track) => (
-                            <div key={track.id} className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 transition duration-200 cursor-pointer">
+                        {data.topTracks && data.topTracks.map((track, index) => (
+                            <a key={index} href={track.externalUrl} target="_blank" className="flex flex-col p-2 rounded-lg hover:bg-neutral-800 transition duration-200 cursor-pointer">
                                 <div className="size-25 bg-cover rounded-lg" style={{ backgroundImage: `url(${track.imageUrl})` }}></div>
                                 
                                 <p className="text-white text-sm mt-2">
                                     {track.name.length > 10 ? track.name.slice(0, 10) + '...' : track.name}
                                 </p>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>
