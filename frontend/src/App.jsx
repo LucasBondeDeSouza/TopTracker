@@ -36,7 +36,7 @@ export default () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <Header />
+      <Header token={token} />
       <Main token={token} />
     </div>
   );

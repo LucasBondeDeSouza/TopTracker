@@ -20,7 +20,8 @@ export default ({ token }) => {
         '2CKOmarVWvWqkNWUatHCex',
         '1on7ZQ2pvgeQF4vmIA09x5',
         '0L8ExT028jH3ddEcZwqJJ5',
-        '3Nrfpe0tUJi4K4DXYWgMUX'
+        '3Nrfpe0tUJi4K4DXYWgMUX',
+        '4gzpq5DPGxSnKTe4SA8HAU'
     ];
 
     useEffect(() => {

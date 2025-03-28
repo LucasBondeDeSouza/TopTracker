@@ -1,5 +1,41 @@
 import axios from "axios";
 
+export const fetchSearchArtists = async (token, search) => {
+    try {
+        const response = await axios.get(
+            `https://api.spotify.com/v1/search?q=${encodeURIComponent(search)}&type=artist`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        // Definindo os critérios de relevância (ajuste conforme necessário)
+        const MIN_POPULARITY = 50;  // Popularidade mínima
+        const MIN_FOLLOWERS = 10000;  // Número mínimo de seguidores
+
+        return response.data.artists.items
+            .filter(artist => {
+                // Filtra artistas que têm imagem, têm popularidade acima do mínimo e seguidores suficientes
+                return artist.images.length > 0 && 
+                       artist.popularity >= MIN_POPULARITY && 
+                       artist.followers.total >= MIN_FOLLOWERS;
+            })
+            .map(artist => ({
+                id: artist.id,
+                artist: artist.name,
+                image: artist.images[0].url,
+                popularity: artist.popularity,
+                followers: artist.followers.total
+            }));
+    } catch (error) {
+        console.error("Erro ao buscar artistas:", error);
+        return [];
+    }
+};
+
 export const fetchArtistsByGenre = async (token, genre, country) => {
     try {
         const response = await axios.get(

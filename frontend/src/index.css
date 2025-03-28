@@ -8,3 +8,24 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+@layer utilities {
+
+    /* Estilização da barra de rolagem para navegadores que suportam */
+    .scrollbar::-webkit-scrollbar {
+        width: 10px;
+        height: 6px;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: #525252;
+        /* Cor do puxador */
+        border-radius: 6px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background: #262626;
+        /* Cor do fundo da barra */
+        border-radius: 6px;
+    }
+}
