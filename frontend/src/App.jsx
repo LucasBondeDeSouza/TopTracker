@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 import Header from "./components/Header";
-import Main from "./pages/Home";
+import Home from "./pages/Home";
 import ArtistPage from "./pages/ArtistPage";
 
 export default () => {
@@ -47,7 +47,7 @@ export default () => {
 
       <Router>
         <Routes>
-          <Route path="/" element={<Main token={token} />} />
+          <Route path="/" element={<Home token={token} />} />
           <Route path="/artist/:artist_id" element={<ArtistPage token={token} />} />
         </Routes>
       </Router>

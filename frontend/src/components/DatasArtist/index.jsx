@@ -51,7 +51,7 @@ export default ({ token, selectArtist }) => {
                 <div 
                     ref={scrollRef}
                     onScroll={handleScroll}
-                    className={`flex items-center content-center overflow-x-auto scrollbar-hidden h-40 rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900 ${data && !hasScrolled ? "pl-3" : ""}`}
+                    className={`flex items-center content-center overflow-x-auto scrollbar-hidden rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900 ${data && !hasScrolled ? "pl-3" : ""}`}
                 >
                     <div className="flex">
                         {data.topTracks && data.topTracks.map((track, index) => (

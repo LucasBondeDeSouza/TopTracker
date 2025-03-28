@@ -59,29 +59,6 @@ export const fetchArtistsByGenre = async (token, genre, country) => {
     }
 };
 
-export const fetchTopHitsByArtists = async (token, artist_id) => {
-    try {
-        const response = await axios.get(
-            `https://api.spotify.com/v1/artists/${artist_id}/top-tracks`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            }
-        )
-
-        return response.data.tracks.map(track => ({
-            name: track.name,
-            image: track.album.images.length > 0 ? track.album.images[0].url : ""
-        }))
-
-    } catch (error) {
-        console.error("Erro ao buscar Top Hits:", error);
-        return [];
-    }
-}
-
 export const fetchPlaylistsByCountry = async (token, country) => {
     try {
         const response = await axios.get(
@@ -177,4 +154,70 @@ export const fetchArtistSelected = async (token, artist_id) => {
         console.error("Erro ao buscar artista e músicas:", error);
         return [];
     }
+};
+
+export const fetchDataArtist = async (token, artist_id) => {
+    try {
+        // Definindo os headers para a requisição
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+
+        // Fazendo a requisição para obter as informações do artista
+        const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artist_id}`, {
+            method: 'GET',
+            headers: headers
+        });
+
+        if (!artistResponse.ok) {
+            throw new Error('Erro ao buscar dados do artista');
+        }
+
+        const artistData = await artistResponse.json();
+
+        // Fazendo a requisição para obter as principais músicas do artista
+        const topTracksResponse = await fetch(`https://api.spotify.com/v1/artists/${artist_id}/top-tracks?market=US`, {
+            method: 'GET',
+            headers: headers
+        });
+
+        if (!topTracksResponse.ok) {
+            throw new Error('Erro ao buscar principais músicas');
+        }
+
+        const topTracksData = await topTracksResponse.json();
+
+        // Fazendo a requisição para obter os álbuns do artista
+        const albumsResponse = await fetch(`https://api.spotify.com/v1/artists/${artist_id}/albums?limit=5`, {
+            method: 'GET',
+            headers: headers
+        });
+
+        if (!albumsResponse.ok) {
+            throw new Error('Erro ao buscar álbuns');
+        }
+
+        const albumsData = await albumsResponse.json();
+
+        // Retornando os dados necessários
+        return {
+            name: artistData.name,
+            image: artistData.images[0]?.url,  // Pegando a primeira imagem disponível
+            externalUrl: artistData.external_urls?.spotify,  // URL externa do artista
+            topTracks: topTracksData.tracks.map(track => ({
+                name: track.name, 
+                externalUrl: track.external_urls?.spotify,  // URL externa da música
+                image: track.album.images[0]?.url  // Imagem do álbum da música
+            })),
+            albums: albumsData.items.map(album => ({
+                name: album.name,
+                externalUrl: album.external_urls?.spotify,  // URL externa do álbum
+                image: album.images[0]?.url  // Imagem do álbum
+            }))
+        };
+    } catch (error) {
+        console.error("Erro ao buscar dados do artista:", error);
+        return [];
+    } 
 };
