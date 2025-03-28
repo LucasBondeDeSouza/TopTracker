@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import ScrollButton from "../ScrollButton"; // Importe o componente ScrollButton
+import { Link } from "react-router-dom";
+import ScrollButton from "../ScrollButton";
 
 export default ({ title, data, setSelectArtist }) => {
     const scrollRef = useRef(null);
@@ -27,9 +28,10 @@ export default ({ title, data, setSelectArtist }) => {
                 className="flex mt-2 overflow-x-auto scrollbar-hidden"
             >
                 {data.map((item, index) => (
-                    <a
+                    <Link
                         key={index}
-                        href={item.externalUrl && item.externalUrl} target="_blank"
+                        to={item.id ? `/artist/${item.id}` : item.externalUrl}
+                        target={item.externalUrl ? "_blank" : undefined}
                         onMouseEnter={item.id ? () => setSelectArtist(item.id) : undefined}
                         className={`flex flex-col p-3 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? "ml-7" : ""
                             }`}
@@ -52,7 +54,7 @@ export default ({ title, data, setSelectArtist }) => {
                                 </p>
                             )}
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </div>
 

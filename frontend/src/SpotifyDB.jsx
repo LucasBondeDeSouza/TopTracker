@@ -164,6 +164,7 @@ export const fetchArtistSelected = async (token, artist_id) => {
 
         // Preparamos os dados a serem retornados
         return {
+            id: artistData.id,
             name: artistData.name,
             image: artistData.images.length > 0 ? artistData.images[0].url : null, // Foto maior disponível
             topTracks: tracksData.map(track => ({

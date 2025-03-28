@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import Dashboard from "../Dashboard";
-import DatasArtist from "../DatasArtist";
+import Dashboard from "../../components/Dashboard";
+import DatasArtist from "../../components/DatasArtist";
 
 export default ({ token }) => {
     const [selectArtist, setSelectArtist] = useState();

@@ -4,16 +4,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ListArtists from "../ListArtists";
 
-export default ({ token }) => {
-    const [selected, setSelected] = useState(true);
+export default ({ selectedHome, handleSelectHome, token }) => {
     const [showList, setShowList] = useState(false);
     const [search, setSearch] = useState('');
 
     const containerRef = useRef(null); // Ref para o container do input e da lista
-
-    const handleSelect = () => {
-        setSelected(!selected);
-    };
 
     const handleShowList = (search) => {
         if (search.length > 0) {
@@ -48,16 +43,17 @@ export default ({ token }) => {
 
     return (
         <div className="flex items-center p-2 space-x-2 max-w-6xl mx-auto">
-            <div 
+            <a 
+                href="/"
                 className="flex items-center justify-center bg-neutral-800 hover:bg-neutral-700 size-12 rounded-full cursor-pointer transition duration-500" 
-                onClick={handleSelect}
+                onClick={handleSelectHome}
             >
-                {selected ? (
+                {selectedHome ? (
                     <HomeIcon fontSize="large" className="text-white" />
                 ) : (
                     <HomeOutlinedIcon fontSize="large" className="text-white" />
                 )}
-            </div>
+            </a>
 
             {/* Container do input + lista */}
             <div className="relative flex-grow min-w-0 max-w-xl md:w-2/4" ref={containerRef}>
