@@ -24,16 +24,18 @@ export default ({ token, search }) => {
     return (
         <div className="absolute top-full left-0 w-full max-h-100 bg-neutral-800 z-10 mt-1 rounded-md shadow-lg scrollbar overflow-auto">
             {filteredArtists.map((artist, index) => (
-                <div key={index} className="p-2 text-white hover:bg-neutral-700 cursor-pointer">
-                    <div className="flex items-center gap-3 ml-2">
-                        <img
-                            className="size-12 bg-white rounded-full"
-                            src={artist.image}
-                            alt={artist.artist}
-                        />
-                        <p className="font-medium">{artist.artist}</p>
+                <a key={index} href={`/artist/${artist.id}`}>
+                    <div className="p-2 text-white hover:bg-neutral-700 cursor-pointer">
+                        <div className="flex items-center gap-3 ml-2">
+                            <img
+                                className="size-12 bg-white rounded-full"
+                                src={artist.image}
+                                alt={artist.artist}
+                            />
+                            <p className="font-medium">{artist.artist}</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             ))}
         </div>
     );
