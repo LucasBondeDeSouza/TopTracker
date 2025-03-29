@@ -9,7 +9,7 @@ export default ({ image, name, externalUrl }) => {
                 <div className="w-full h-full rounded-lg gradient bg-gradient-to-b to-[#111] from-transparent">
                     <div className="w-full h-full rounded-lg gradient bg-gradient-to-l to-[#111] from-transparent">
                         <Link to={externalUrl} target="_blank">
-                            <p className="absolute bottom-25 left-5 text-white font-bold text-8xl hover:underline cursor-pointer">
+                            <p className="absolute bottom-25 left-5 text-white font-bold text-7xl hover:underline cursor-pointer">
                                 {name}
                             </p>
                         </Link>
