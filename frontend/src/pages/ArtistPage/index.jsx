@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { fetchDataArtist } from "../../SpotifyDB";
 import ScrollButton from "../../components/ScrollButton";
 import ProfileArtist from "../../components/ProfileArtist";
+import DetailsArtist from "../../components/DetailsArtist";
 
 export default ({ token }) => {
     const { artist_id } = useParams();
@@ -29,13 +30,13 @@ export default ({ token }) => {
     console.log(data)
 
     return (
-        <div className="max-w-6xl mx-auto px-2 grid grid-cols-6 md:space-x-2">
+        <div className="max-w-6xl mx-auto px-2 grid grid-cols-6 space-y-2 md:space-x-2">
             <div className="col-span-6 md:col-span-4">
                 <ProfileArtist image={data.image} name={data.name} externalUrl={data.externalUrl} />
             </div>
 
-            <div className="col-span-2 hidden md:block">
-
+            <div className="col-span-6 md:col-span-2">
+                <DetailsArtist musics={data.topTracks} albums={data.albums}  />
             </div>
         </div>
     )

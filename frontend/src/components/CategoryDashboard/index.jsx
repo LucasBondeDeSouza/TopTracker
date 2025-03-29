@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollButton from "../ScrollButton";
 
-export default ({ title, data, setSelectArtist }) => {
+export default ({ title, data = [], setSelectArtist = () => { } }) => {
     const scrollRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [hasScrolled, setHasScrolled] = useState(false);
@@ -19,6 +19,7 @@ export default ({ title, data, setSelectArtist }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
+            {/* Título da categoria */}
             <h1 className="px-10 pt-5 text-white font-bold text-2xl">{title}</h1>
 
             {/* Container de scroll */}
@@ -30,27 +31,28 @@ export default ({ title, data, setSelectArtist }) => {
                 {data.map((item, index) => (
                     <Link
                         key={index}
-                        to={item.id ? `/artist/${item.id}` : item.externalUrl}
+                        to={item.id ? `/artist/${item.id}` : item.externalUrl || "#"}
                         target={item.externalUrl ? "_blank" : undefined}
                         onMouseEnter={item.id ? () => setSelectArtist(item.id) : undefined}
                         className={`flex flex-col p-3 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? "ml-7" : ""
                             }`}
                     >
-                        <img
-                            src={item.image}
-                            alt={item.name}
-                            className="size-39 bg-black object-cover rounded-lg"
-                        />
+                        <div className="size-40 bg-cover rounded-lg" style={{ backgroundImage: `url(${item.image})`}}></div>
+
                         <div className="mt-3 w-35">
                             {item.artist && (
                                 <p className="text-neutral-50 text-sm font-semibold">
-                                    {item.artist.length > 18 ? item.artist.slice(0, 18) + '...' : item.artist}
+                                    {item.artist.length > 18 ? item.artist.slice(0, 18) + "..." : item.artist}
                                 </p>
                             )}
-
                             {item.name && (
                                 <p className="text-neutral-400 text-sm font-semibold">
-                                    {item.name.length > 25 ? item.name.slice(0, 25) + '...' : item.name}
+                                    {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
+                                </p>
+                            )}
+                            {item.playlist && (
+                                <p className="text-white text-sm font-semibold">
+                                    {item.playlist.length > 30 ? item.playlist.slice(0, 30) + "..." : item.playlist}
                                 </p>
                             )}
                         </div>
@@ -62,4 +64,4 @@ export default ({ title, data, setSelectArtist }) => {
             <ScrollButton scrollRef={scrollRef} isHovered={isHovered} />
         </div>
     );
-};
+}

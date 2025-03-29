@@ -76,7 +76,7 @@ export const fetchPlaylistsByCountry = async (token, country) => {
             .filter(playlist => playlist !== null) // Remove elementos nulos
             .map(playlist => ({
                 externalUrl: playlist.external_urls.spotify,
-                name: playlist.name,
+                playlist: playlist.name,
                 image: playlist.images?.length > 0 ? playlist.images[0].url : "", // Usa optional chaining para evitar erros
             }));
 
