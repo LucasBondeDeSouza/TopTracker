@@ -15,7 +15,7 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
 
     const cardSize = {
         sm: { imgSize: "size-25", padding: "p-2", marginScroll: "ml-3" },
-        md: { imgSize: "size-30", padding: "p-2", marginScroll: "ml-3" },
+        md: { imgSize: "size-30", padding: "p-2", marginScroll: "ml-7" },
         lg: { imgSize: "size-40", padding: "p-3", marginScroll: "ml-7" }, // Sem limite de texto
     };
 
