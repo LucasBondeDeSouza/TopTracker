@@ -14,12 +14,12 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
     };
 
     const cardSize = {
-        sm: { imgSize: "size-25", marginScroll: "ml-3" },
-        md: { imgSize: "size-30", marginScroll: "ml-3" },
-        lg: { imgSize: "size-40", marginScroll: "ml-7" }, // Sem limite de texto
+        sm: { imgSize: "size-25", padding: "p-2", marginScroll: "ml-3" },
+        md: { imgSize: "size-30", padding: "p-2", marginScroll: "ml-3" },
+        lg: { imgSize: "size-40", padding: "p-3", marginScroll: "ml-7" }, // Sem limite de texto
     };
 
-    const { imgSize, marginScroll } = cardSize[size] || cardSize.md;
+    const { imgSize, padding, marginScroll } = cardSize[size] || cardSize.md;
 
     return (
         <div
@@ -42,7 +42,7 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
                         to={item.id ? `/artist/${item.id}` : item.externalUrl || "#"}
                         target={item.externalUrl ? "_blank" : undefined}
                         onMouseEnter={item.id ? () => setSelectArtist(item.id) : undefined}
-                        className={`flex flex-col p-2 hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? marginScroll : ""
+                        className={`flex flex-col ${padding} hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? marginScroll : ""
                             }`}
                     >
                         <div className={`${imgSize} bg-cover rounded-lg`} style={{ backgroundImage: `url(${item.image})`}}></div>
