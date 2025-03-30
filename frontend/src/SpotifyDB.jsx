@@ -147,7 +147,7 @@ export const fetchArtistSelected = async (token, artist_id) => {
             topTracks: tracksData.map(track => ({
                 externalUrl: track.external_urls.spotify,
                 name: track.name,
-                imageUrl: track.album.images.length > 0 ? track.album.images[0].url : null,
+                image: track.album.images.length > 0 ? track.album.images[0].url : null,
             }))
         };
     } catch (error) {

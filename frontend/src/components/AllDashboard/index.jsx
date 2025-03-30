@@ -24,12 +24,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Top Pop'} data={artistsPop} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Top Sertanejo'} data={artistsSertanejo} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Top Funk'} data={artistsFunk} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Top Rock'} data={artistsRock} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Top K-Pop'} data={artistsKPop} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Top Pagode'} data={artistsPagode} setSelectArtist={setSelectArtist} />
+            <CategoryDashboard title={'Top Pop'} data={artistsPop} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Top Sertanejo'} data={artistsSertanejo} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Top Funk'} data={artistsFunk} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Top Rock'} data={artistsRock} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Top K-Pop'} data={artistsKPop} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Top Pagode'} data={artistsPagode} setSelectArtist={setSelectArtist} size={'lg'} />
         </>
     );
 };

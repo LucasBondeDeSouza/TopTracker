@@ -24,12 +24,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Playlists do Brasil'} data={playlistsBR} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Playlists dos EUA'} data={playlistsUS} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Playlists da Espanha'} data={playlistsES} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Playlists do Reino Unido'} data={playlistsGB} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Playlists do Japão'} data={playlistsJP} setSelectArtist={setSelectArtist} />
-            <CategoryDashboard title={'Playlists da Coreia do Sul'} data={playlistsKR} setSelectArtist={setSelectArtist} />
+            <CategoryDashboard title={'Playlists do Brasil'} data={playlistsBR} setSelectArtist={setSelectArtist}size={'lg'} />
+            <CategoryDashboard title={'Playlists dos EUA'} data={playlistsUS} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Playlists da Espanha'} data={playlistsES} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Playlists do Reino Unido'} data={playlistsGB} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Playlists do Japão'} data={playlistsJP} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategoryDashboard title={'Playlists da Coreia do Sul'} data={playlistsKR} setSelectArtist={setSelectArtist} size={'lg'} />
         </>
     );
 };

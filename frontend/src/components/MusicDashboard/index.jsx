@@ -24,12 +24,12 @@ export default ({ token }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Melhores do Pop'} data={popTracks} />
-            <CategoryDashboard title={'Melhores do Sertanejo'} data={sertanejoTracks} />
-            <CategoryDashboard title={'Melhores do Funk'} data={funkTracks} />
-            <CategoryDashboard title={'Melhores do Rock'} data={rockTracks} />
-            <CategoryDashboard title={'Melhores do K-Pop'} data={kpopTracks} />
-            <CategoryDashboard title={'Melhores do Pagode'} data={pagodeTracks} />
+            <CategoryDashboard title={'Melhores do Pop'} data={popTracks} size={'lg'} />
+            <CategoryDashboard title={'Melhores do Sertanejo'} data={sertanejoTracks} size={'lg'} />
+            <CategoryDashboard title={'Melhores do Funk'} data={funkTracks} size={'lg'} />
+            <CategoryDashboard title={'Melhores do Rock'} data={rockTracks} size={'lg'} />
+            <CategoryDashboard title={'Melhores do K-Pop'} data={kpopTracks} size={'lg'} />
+            <CategoryDashboard title={'Melhores do Pagode'} data={pagodeTracks} size={'lg'} />
         </>
     );
 };
