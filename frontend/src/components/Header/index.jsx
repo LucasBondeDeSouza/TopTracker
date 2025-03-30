@@ -11,17 +11,18 @@ export default ({ selectedHome, handleSelectHome, token }) => {
     const containerRef = useRef(null); // Ref para o container do input e da lista
 
     const handleShowList = (search) => {
-        if (search.length > 0) {
-            return setShowList(true);
-        } else {
-            return setShowList(false);
-        }
+        setShowList(search.length > 0);
     };
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
         setSearch(value);
         handleShowList(value); // Chama a função para verificar se deve mostrar a lista
+    };
+
+    // Fecha a lista ao clicar em um artista
+    const handleSelectArtist = () => {
+        setShowList(false);
     };
 
     // Função para detectar clique fora do container
@@ -35,7 +36,6 @@ export default ({ selectedHome, handleSelectHome, token }) => {
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
 
-        // Remove o ouvinte de evento quando o componente for desmontado
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -63,13 +63,13 @@ export default ({ selectedHome, handleSelectHome, token }) => {
                         className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 text-white rounded-full py-2 pl-12 text-lg w-full border-2 border-transparent focus:border-white outline-none transition duration-300" 
                         type="text"
                         placeholder="Pesquise um artista"
-                        onChange={handleSearchChange} // Usa a nova função handleSearchChange
+                        onChange={handleSearchChange} 
                     />
                     <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
                 </div>
 
                 {/* Renderiza a lista abaixo do input */}
-                {showList && <ListArtists token={token} search={search} />}
+                {showList && <ListArtists token={token} search={search} onSelectArtist={handleSelectArtist} />}
             </div>
         </div>
     );
