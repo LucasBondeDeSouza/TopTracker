@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { fetchSearchArtists } from "../../SpotifyDB";
 
 export default ({ token, search }) => {
@@ -24,7 +25,7 @@ export default ({ token, search }) => {
     return (
         <div className="absolute top-full left-0 w-full max-h-100 bg-neutral-800 z-10 mt-1 rounded-md shadow-lg scrollbar overflow-auto">
             {filteredArtists.map((artist, index) => (
-                <a key={index} href={`https://spotlyst.vercel.app/artist/${artist.id}`}>
+                <Link key={index} to={`/artist/${artist.id}`}>
                     <div className="p-2 text-white hover:bg-neutral-700 cursor-pointer">
                         <div className="flex items-center gap-3 ml-2">
                             <img
@@ -35,7 +36,7 @@ export default ({ token, search }) => {
                             <p className="font-medium">{artist.artist}</p>
                         </div>
                     </div>
-                </a>
+                </Link>
             ))}
         </div>
     );

@@ -43,9 +43,8 @@ export default () => {
 
   return (
     <div className="bg-black min-h-screen">
-      <Header selectedHome={selectedHome} handleSelectHome={handleSelectHome} token={token} />
-
       <Router>
+        <Header selectedHome={selectedHome} handleSelectHome={handleSelectHome} token={token} />
         <Routes>
           <Route path="/" element={<Home token={token} />} />
           <Route path="/artist/:artist_id" element={<ArtistPage token={token} />} />
