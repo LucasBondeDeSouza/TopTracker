@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchTrackByGenre } from "../../SpotifyDB";
-import CategoryDashboard from "../CategoryDashboard";
+import CategorySection from "../CategorySection";
 
 export default ({ token }) => {
     const [popTracks, setPopTracks] = useState([]);
@@ -24,12 +24,12 @@ export default ({ token }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Top Pop Songs'} data={popTracks} size={'lg'} />
-            <CategoryDashboard title={'Top Sertanejo Songs'} data={sertanejoTracks} size={'lg'} />
-            <CategoryDashboard title={'Top Funk Songs'} data={funkTracks} size={'lg'} />
-            <CategoryDashboard title={'Top Rock Songs'} data={rockTracks} size={'lg'} />
-            <CategoryDashboard title={'Top K-Pop Songs'} data={kpopTracks} size={'lg'} />
-            <CategoryDashboard title={'Top Pagode Songs'} data={pagodeTracks} size={'lg'} />
+            <CategorySection title={'Top Pop Songs'} data={popTracks} size={'lg'} />
+            <CategorySection title={'Top Sertanejo Songs'} data={sertanejoTracks} size={'lg'} />
+            <CategorySection title={'Top Funk Songs'} data={funkTracks} size={'lg'} />
+            <CategorySection title={'Top Rock Songs'} data={rockTracks} size={'lg'} />
+            <CategorySection title={'Top K-Pop Songs'} data={kpopTracks} size={'lg'} />
+            <CategorySection title={'Top Pagode Songs'} data={pagodeTracks} size={'lg'} />
         </>
     );
 };

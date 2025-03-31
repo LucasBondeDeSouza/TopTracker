@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
-import HeaderDashboard from "../HeaderDashboard";
-import ArtistsDashboard from "../ArtistsDashboard";
-import MusicDashboard from "../SongsDashboard";
-import PlaylistDashboard from "../PlaylistsDashboard";
+import HeaderDashboard from "../DashboardHeader";
+import TrendingArtists from "../TrendingArtists";
+import TrendingSongs from "../TrendingSongs";
+import TrendingPlaylists from "../TrendingPlaylists";
 
 export default ({ token, setSelectArtist }) => {
     const [selectCategory, setSelectCategory] = useState('artists')
 
     const handleCategory = (category) => {
         if (category == 'artists') {
-            return <ArtistsDashboard token={token} setSelectArtist={setSelectArtist} />
+            return <TrendingArtists token={token} setSelectArtist={setSelectArtist} />
         } else if (category == 'songs') {
-            return <MusicDashboard token={token} setSelectArtist={setSelectArtist} />
+            return <TrendingSongs token={token} setSelectArtist={setSelectArtist} />
         } else if (category == 'playlists') {
-            return <PlaylistDashboard token={token} setSelectArtist={setSelectArtist} />
+            return <TrendingPlaylists token={token} setSelectArtist={setSelectArtist} />
         }
     }
 

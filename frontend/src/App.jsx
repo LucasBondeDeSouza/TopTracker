@@ -3,7 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import ArtistPage from "./pages/ArtistPage";
+import ArtistProfilePage from "./pages/ArtistProfilePage";
 
 export default () => {
   const [selectedHome, setSelectedHome] = useState(true);
@@ -47,7 +47,7 @@ export default () => {
         <Header selectedHome={selectedHome} handleSelectHome={handleSelectHome} token={token} />
         <Routes>
           <Route path="/" element={<Home token={token} />} />
-          <Route path="/artist/:artist_id" element={<ArtistPage token={token} />} />
+          <Route path="/artist/:artist_id" element={<ArtistProfilePage token={token} />} />
         </Routes>
       </Router>
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchArtistsByGenre } from "../../SpotifyDB";
-import CategoryDashboard from "../CategoryDashboard";
+import CategorySection from "../CategorySection";
 
 export default ({ token, setSelectArtist }) => {
     const [artistsPop, setArtistsPop] = useState([]);
@@ -24,12 +24,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Top Pop Artists'} data={artistsPop} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Sertanejo Artists'} data={artistsSertanejo} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Funk Artists'} data={artistsFunk} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Rock Artists'} data={artistsRock} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top K-Pop Artists'} data={artistsKPop} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Pagode Artists'} data={artistsPagode} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Pop Artists'} data={artistsPop} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Sertanejo Artists'} data={artistsSertanejo} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Funk Artists'} data={artistsFunk} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Rock Artists'} data={artistsRock} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top K-Pop Artists'} data={artistsKPop} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Pagode Artists'} data={artistsPagode} setSelectArtist={setSelectArtist} size={'lg'} />
         </>
     );
 };

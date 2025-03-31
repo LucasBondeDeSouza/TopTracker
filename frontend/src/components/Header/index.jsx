@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import ListArtists from "../ListArtists";
+import ArtistSuggestions from "../ArtistSuggestions";
 
 export default ({ selectedHome, handleSelectHome, token }) => {
     const [showList, setShowList] = useState(false);
@@ -69,7 +69,7 @@ export default ({ selectedHome, handleSelectHome, token }) => {
                 </div>
 
                 {/* Renderiza a lista abaixo do input */}
-                {showList && <ListArtists token={token} search={search} onSelectArtist={handleSelectArtist} />}
+                {showList && <ArtistSuggestions token={token} search={search} onSelectArtist={handleSelectArtist} />}
             </div>
         </div>
     );

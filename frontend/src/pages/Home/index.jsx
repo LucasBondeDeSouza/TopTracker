@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import Dashboard from "../../components/Dashboard";
-import DatasArtist from "../../components/DatasArtist";
+import DashboardOverview from "../../components/DashboardOverview";
+import ArtistPreview from "../../components/ArtistPreview";
 
 export default ({ token }) => {
     const [selectArtist, setSelectArtist] = useState();
@@ -32,11 +32,11 @@ export default ({ token }) => {
     return (
         <div className="max-w-6xl mx-auto px-2 grid grid-cols-6 md:space-x-2">
             <div className="col-span-6 md:col-span-4">
-                <Dashboard token={token} setSelectArtist={setSelectArtist} />
+                <DashboardOverview token={token} setSelectArtist={setSelectArtist} />
             </div>
 
             <div className="col-span-2 hidden md:block">
-                <DatasArtist token={token} selectArtist={selectArtist} />
+                <ArtistPreview token={token} selectArtist={selectArtist} />
             </div>
         </div>
     );

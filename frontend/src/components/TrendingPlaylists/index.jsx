@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchPlaylistsByCountry } from "../../SpotifyDB";
-import CategoryDashboard from "../CategoryDashboard";
+import CategorySection from "../CategorySection";
 
 export default ({ token, setSelectArtist }) => {
     const [playlistsBR, setPlaylistsBR] = useState([]);
@@ -24,12 +24,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            <CategoryDashboard title={'Top Playlists in Brazil'} data={playlistsBR} setSelectArtist={setSelectArtist}size={'lg'} />
-            <CategoryDashboard title={'Top Playlists in USA'} data={playlistsUS} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Playlists in Japan'} data={playlistsJP} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Playlists in UK'} data={playlistsGB} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Playlists in Germany'} data={playlistsDE} setSelectArtist={setSelectArtist} size={'lg'} />
-            <CategoryDashboard title={'Top Playlists in South Korea'} data={playlistsKR} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Playlists in Brazil'} data={playlistsBR} setSelectArtist={setSelectArtist}size={'lg'} />
+            <CategorySection title={'Top Playlists in USA'} data={playlistsUS} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Playlists in Japan'} data={playlistsJP} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Playlists in UK'} data={playlistsGB} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Playlists in Germany'} data={playlistsDE} setSelectArtist={setSelectArtist} size={'lg'} />
+            <CategorySection title={'Top Playlists in South Korea'} data={playlistsKR} setSelectArtist={setSelectArtist} size={'lg'} />
         </>
     );
 };

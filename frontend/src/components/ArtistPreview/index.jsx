@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { fetchArtistSelected } from "../../SpotifyDB";
-import CategoryDashboard from "../CategoryDashboard";
+import CategorySection from "../CategorySection";
 
 export default ({ token, selectArtist }) => {
     const [data, setData] = useState({});
@@ -33,7 +33,7 @@ export default ({ token, selectArtist }) => {
             </div>
 
             <div className="pb-3 rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900">
-                <CategoryDashboard title={''} data={data.topTracks} size={'sm'} />
+                <CategorySection title={''} data={data.topTracks} size={'sm'} />
             </div>
         </div>
     );
