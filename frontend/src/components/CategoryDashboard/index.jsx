@@ -45,21 +45,21 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
                         className={`flex flex-col ${padding} hover:bg-neutral-800 rounded-lg transition duration-200 cursor-pointer ${index === 0 && !hasScrolled ? marginScroll : ""
                             }`}
                     >
-                        <div className={`${imgSize} bg-cover rounded-lg`} style={{ backgroundImage: `url(${item.image})`}}></div>
+                        <div className={`${imgSize} bg-cover rounded-lg mb-2`} style={{ backgroundImage: `url(${item.image})`}}></div>
 
                         
                             {item.artist && (
-                                <p className="text-neutral-50 text-sm font-semibold mt-2">
+                                <p className="text-neutral-50 text-sm font-semibold">
                                     {item.artist.length > 18 ? item.artist.slice(0, 18) + "..." : item.artist}
                                 </p>
                             )}
                             {item.name && (
-                                <p className="text-neutral-400 text-sm font-semibold mt-2">
+                                <p className="text-neutral-400 text-sm font-semibold">
                                     {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
                                 </p>
                             )}
                             {item.playlist && (
-                                <p className="text-white text-sm font-semibold mt-2">
+                                <p className="text-white text-sm font-semibold">
                                     {item.playlist.length > 30 ? item.playlist.slice(0, 30) + "..." : item.playlist}
                                 </p>
                             )}

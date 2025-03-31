@@ -32,7 +32,7 @@ export default ({ token, selectArtist }) => {
                 </div>
             </div>
 
-            <div className="rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900">
+            <div className="pb-3 rounded-b-lg gradient bg-gradient-to-t to-[#111] from-neutral-900">
                 <CategoryDashboard title={''} data={data.topTracks} size={'sm'} />
             </div>
         </div>

@@ -6,20 +6,20 @@ import MusicDashboard from "../MusicDashboard";
 import PlaylistDashboard from "../PlaylistDashboard";
 
 export default ({ token, setSelectArtist }) => {
-    const [selectCategory, setSelectCategory] = useState('all')
+    const [selectCategory, setSelectCategory] = useState('artists')
 
     const handleCategory = (category) => {
-        if (category == 'all') {
+        if (category == 'artists') {
             return <AllDashboard token={token} setSelectArtist={setSelectArtist} />
-        } else if (category == 'music') {
+        } else if (category == 'songs') {
             return <MusicDashboard token={token} setSelectArtist={setSelectArtist} />
-        } else if (category == 'playlist') {
+        } else if (category == 'playlists') {
             return <PlaylistDashboard token={token} setSelectArtist={setSelectArtist} />
         }
     }
 
     return (
-        <div className="bg-neutral-900 rounded-lg mb-5">
+        <div className="pb-3 bg-neutral-900 rounded-lg mb-5">
             <HeaderDashboard selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
 
             {handleCategory(selectCategory)}
