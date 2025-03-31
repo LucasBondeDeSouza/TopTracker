@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 import HeaderDashboard from "../HeaderDashboard";
-import AllDashboard from "../AllDashboard";
-import MusicDashboard from "../MusicDashboard";
-import PlaylistDashboard from "../PlaylistDashboard";
+import ArtistsDashboard from "../ArtistsDashboard";
+import MusicDashboard from "../SongsDashboard";
+import PlaylistDashboard from "../PlaylistsDashboard";
 
 export default ({ token, setSelectArtist }) => {
     const [selectCategory, setSelectCategory] = useState('artists')
 
     const handleCategory = (category) => {
         if (category == 'artists') {
-            return <AllDashboard token={token} setSelectArtist={setSelectArtist} />
+            return <ArtistsDashboard token={token} setSelectArtist={setSelectArtist} />
         } else if (category == 'songs') {
             return <MusicDashboard token={token} setSelectArtist={setSelectArtist} />
         } else if (category == 'playlists') {

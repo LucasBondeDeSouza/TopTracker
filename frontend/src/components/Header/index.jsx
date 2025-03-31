@@ -62,7 +62,7 @@ export default ({ selectedHome, handleSelectHome, token }) => {
                     <input 
                         className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 text-white rounded-full py-2 pl-12 text-lg w-full border-2 border-transparent focus:border-white outline-none transition duration-300" 
                         type="text"
-                        placeholder="Search a artist..."
+                        placeholder="Search artist..."
                         onChange={handleSearchChange} 
                     />
                     <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
