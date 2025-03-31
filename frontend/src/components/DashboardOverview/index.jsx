@@ -21,7 +21,7 @@ export default ({ token, setSelectArtist }) => {
     return (
         <div className="pb-3 bg-neutral-900 rounded-lg mb-5">
             <HeaderDashboard selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
-
+            
             {handleCategory(selectCategory)}
         </div>
     );
