@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchPlaylistsByCountry } from "../../SpotifyDB";
 import CategorySection from "../CategorySection";
-import SkeletonCategoryCard from "../SkeletonCategoryCard";
+import SkeletonCategorySection from "../SkeletonCategorySection";
 
 export default ({ token, setSelectArtist }) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -28,12 +28,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in Brazil'} data={playlistsBR} setSelectArtist={setSelectArtist}size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in USA'} data={playlistsUS} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in Japan'} data={playlistsJP} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in UK'} data={playlistsGB} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in Germany'} data={playlistsDE} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Playlists in South Korea'} data={playlistsKR} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in Brazil'} data={playlistsBR} setSelectArtist={setSelectArtist}size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in USA'} data={playlistsUS} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in Japan'} data={playlistsJP} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in UK'} data={playlistsGB} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in Germany'} data={playlistsDE} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Playlists in South Korea'} data={playlistsKR} setSelectArtist={setSelectArtist} size={'lg'} />}
         </>
     );
 };

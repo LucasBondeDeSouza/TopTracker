@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchArtistsByGenre } from "../../SpotifyDB";
 import CategorySection from "../CategorySection";
-import SkeletonCategoryCard from "../SkeletonCategoryCard";
+import SkeletonCategorySection from "../SkeletonCategorySection";
 
 export default ({ token, setSelectArtist }) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -28,12 +28,12 @@ export default ({ token, setSelectArtist }) => {
 
     return (
         <>
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Pop Artists'} data={artistsPop} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Sertanejo Artists'} data={artistsSertanejo} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Funk Artists'} data={artistsFunk} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Rock Artists'} data={artistsRock} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top K-Pop Artists'} data={artistsKPop} setSelectArtist={setSelectArtist} size={'lg'} />}
-            {isLoading ? <SkeletonCategoryCard size={'lg'} /> : <CategorySection title={'Top Pagode Artists'} data={artistsPagode} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Pop Artists'} data={artistsPop} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Sertanejo Artists'} data={artistsSertanejo} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Funk Artists'} data={artistsFunk} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Rock Artists'} data={artistsRock} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top K-Pop Artists'} data={artistsKPop} setSelectArtist={setSelectArtist} size={'lg'} />}
+            {isLoading ? <SkeletonCategorySection size={'lg'} /> : <CategorySection title={'Top Pagode Artists'} data={artistsPagode} setSelectArtist={setSelectArtist} size={'lg'} />}
         </>
     );
 };
