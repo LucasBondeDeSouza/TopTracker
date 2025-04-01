@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import ArtistProfilePage from "./pages/ArtistProfilePage";
@@ -10,10 +10,6 @@ export default () => {
   const [token, setToken] = useState("")
   const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID
   const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
-
-  const handleSelectHome = () => {
-    setSelectedHome(!selectedHome);
-  };
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -44,10 +40,10 @@ export default () => {
   return (
     <div className="bg-black min-h-screen">
       <Router>
-        <Header selectedHome={selectedHome} handleSelectHome={handleSelectHome} token={token} />
+        <Header selectedHome={selectedHome} token={token} />
         <Routes>
-          <Route path="/" element={<Home token={token} />} />
-          <Route path="/artist/:artist_id" element={<ArtistProfilePage token={token} />} />
+          <Route path="/" element={<Home token={token} setSelectedHome={setSelectedHome} />} />
+          <Route path="/artist/:artist_id" element={<ArtistProfilePage token={token} setSelectedHome={setSelectedHome} />} />
         </Routes>
       </Router>
     </div>

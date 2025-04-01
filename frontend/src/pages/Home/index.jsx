@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import DashboardOverview from "../../components/DashboardOverview";
 import ArtistPreview from "../../components/ArtistPreview";
 
-export default ({ token }) => {
+export default ({ token, setSelectedHome }) => {
     const [selectArtist, setSelectArtist] = useState();
+    setSelectedHome(true)
     
     const artists = [
         '1uNFoZAHBGtllmzznpCI3s',

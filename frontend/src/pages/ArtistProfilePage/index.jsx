@@ -4,10 +4,11 @@ import { fetchDataArtist } from "../../SpotifyDB";
 import ArtistProfileCard from "../../components/ArtistProfileCard";
 import ArtistDiscography from "../../components/ArtistDiscography";
 
-export default ({ token }) => {
+export default ({ token, setSelectedHome }) => {
     const [isLoading, setIsLoading] = useState(true)
     const { artist_id } = useParams();
     const [data, setData] = useState({})
+    setSelectedHome(false)
 
     useEffect(() => {
         const fetchData = async () => {

@@ -4,7 +4,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ArtistSuggestions from "../ArtistSuggestions";
 
-export default ({ selectedHome, handleSelectHome, token }) => {
+export default ({ selectedHome, token }) => {
     const [showList, setShowList] = useState(false);
     const [search, setSearch] = useState('');
 
@@ -46,7 +46,6 @@ export default ({ selectedHome, handleSelectHome, token }) => {
             <a 
                 href="/"
                 className="flex items-center justify-center bg-neutral-800 hover:bg-neutral-700 size-12 rounded-full cursor-pointer transition duration-500" 
-                onClick={handleSelectHome}
             >
                 {selectedHome ? (
                     <HomeIcon fontSize="large" className="text-white" />
