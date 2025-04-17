@@ -20,20 +20,20 @@ Veja abaixo um exemplo da interface da aplicação:
 
 1. **Clone o repositório**
 
-   ```bash
-   git clone https://github.com/seu-usuario/TopTracker.git
-   cd TopTracker/frontend
-   ```
+```bash
+git clone https://github.com/seu-usuario/TopTracker.git
+cd TopTracker/frontend
+```
 
 2. **Instale as Dependências**
 
-  ```bash
-  cd frontend
-  npm i
-  ```
+```bash
+cd frontend
+npm i
+```
 
 3. **Inicie o servidor de desenvolvimento**
 
-  ```bash
-  npm run dev
-  ```
+```bash
+npm run dev
+```
