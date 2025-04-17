@@ -8,14 +8,32 @@ Veja abaixo um exemplo da interface da aplicação:
 
 ![Screenshot da aplicação](preview.PNG)
 
-> 💡 Coloque sua captura de tela em `frontend/assets/` e substitua este arquivo (`screenshot.png`) com a imagem real da aplicação.
-
 ## 🚀 Tecnologias Utilizadas
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [JavaScript (ES6+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [Vercel](https://vercel.com/) – (Configuração para deploy incluída)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Vercel](https://vercel.com/)
 
-## 📁 Estrutura do Projeto
+## 📦 Como Rodar o Projeto Localmente
 
+1. **Clone o repositório**
+   
+   ```bash
+   git clone https://github.com/seu-usuario/TopTracker.git
+   cd TopTracker/frontend
+   ```
+
+2. **Instale as Dependências**
+
+  ```bash
+  cd frontend
+  npm i
+  ```
+
+3. **Inicie o servidor de desenvolvimento**
+
+  ```bash
+  npm run dev
+  ```
