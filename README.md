@@ -37,3 +37,9 @@ npm i
 ```bash
 npm run dev
 ```
+
+4. **Acesse no navegador**
+
+```bash
+http://localhost:5173/
+```
