@@ -19,7 +19,7 @@ Veja abaixo um exemplo da interface da aplicação:
 ## 📦 Como Rodar o Projeto Localmente
 
 1. **Clone o repositório**
-   
+
    ```bash
    git clone https://github.com/seu-usuario/TopTracker.git
    cd TopTracker/frontend
