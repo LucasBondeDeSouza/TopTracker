@@ -49,19 +49,31 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
 
                         
                             {item.artist && (
-                                <p className="text-neutral-50 text-sm font-semibold">
+                                {/*
+                                  <p className="text-neutral-50 text-sm font-semibold">
                                     {item.artist.length > 18 ? item.artist.slice(0, 18) + "..." : item.artist}
-                                </p>
+                                  </p>
+                                */}
+
+                                <p className='text-neutral-50 text-sm font-semibold truncate'>{item.artist}</p>
                             )}
                             {item.name && (
-                                <p className="text-neutral-400 text-sm font-semibold">
-                                    {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
-                                </p>
+                                {/*
+                                    <p className="text-neutral-400 text-sm font-semibold">
+                                        {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
+                                    </p>
+                                */}
+
+                                <p className='text-neutral-400 text-sm font-semibold truncate'>{item.name}</p>
                             )}
                             {item.playlist && (
-                                <p className="text-white text-sm font-semibold">
-                                    {item.playlist.length > 30 ? item.playlist.slice(0, 30) + "..." : item.playlist}
-                                </p>
+                                {/*
+                                    <p className="text-white text-sm font-semibold">
+                                        {item.playlist.length > 30 ? item.playlist.slice(0, 30) + "..." : item.playlist}
+                                    </p>
+                                */}
+
+                                <p className='text-white text-sm font-semibold truncate'>{item.playlist}</p>
                             )}
                     </Link>
                 ))}
