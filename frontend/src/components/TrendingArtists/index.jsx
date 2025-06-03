@@ -18,7 +18,7 @@ export default ({ token, setSelectArtist }) => {
             setArtistsPop(await fetchArtistsByGenre(token, 'pop', 'US'));
             setArtistsSertanejo(await fetchArtistsByGenre(token, 'sertanejo', 'BR'));
             setArtistsFunk(await fetchArtistsByGenre(token, 'funk', 'BR'));
-            setArtistsRock(await fetchArtistsByGenre(token, 'rock', 'BR'));
+            setArtistsRock(await fetchArtistsByGenre(token, 'rock', 'US'));
             setArtistsKPop(await fetchArtistsByGenre(token, 'k-pop', ''));
             setArtistsPagode(await fetchArtistsByGenre(token, 'pagode', 'BR'));
             setIsLoading(false)
