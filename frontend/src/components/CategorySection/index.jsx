@@ -50,13 +50,14 @@ export default ({ title, data = [], setSelectArtist = () => {}, size }) => {
                         {item.artist && (
                             <p className='text-neutral-50 text-sm font-semibold truncate'>{item.artist}</p>
                         )}
+
                         {item.name && (
                             <p className='text-neutral-400 text-sm font-semibold truncate'>{item.name}</p>
                         )}
+
                         {item.playlist && (
                             <p className='text-white text-sm font-semibold truncate'>{item.playlist}</p>
                         )}
-
                     </Link>
                 ))}
             </div>
