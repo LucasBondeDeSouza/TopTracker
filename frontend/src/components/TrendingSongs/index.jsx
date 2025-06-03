@@ -18,7 +18,7 @@ export default ({ token }) => {
             setPopTracks(await fetchTrackByGenre(token, 'pop', 'US'));
             setSertanejoTracks(await fetchTrackByGenre(token, 'sertanejo', 'BR'));
             setFunkTracks(await fetchTrackByGenre(token, 'funk', 'BR'));
-            setRockTracks(await fetchTrackByGenre(token, 'rock', 'BR'));
+            setRockTracks(await fetchTrackByGenre(token, 'rock', 'US'));
             setKpopTracks(await fetchTrackByGenre(token, 'k-pop', ''));
             setPagodeTracks(await fetchTrackByGenre(token, 'pagode', 'BR'));
             setIsLoading(false)
